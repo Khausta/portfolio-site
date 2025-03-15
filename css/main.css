@@ -11,6 +11,7 @@ a {
 :root {
     --index: calc(1vw + 1vh);
     --transition: 1s cubic-bezier(.05 .5 0 1);
+    --projects-font-size:  calc(var(--index)* 1.2);
 }
 
 @font-face {
@@ -24,6 +25,11 @@ a {
     src: url(../fonts/merriweather-regular-italic.woff2);
 }
 
+@font-face {
+    font-family: RubikSprayPaint-Regular;
+    src: url(../fonts/RubikSprayPaint-Regular.ttf);
+}
+
 body {
     background-color: #000;
     color: #fff;
@@ -31,10 +37,15 @@ body {
     scroll-behavior: smooth;
 }
 
+
 .layers {
+    margin: auto;
     perspective: 1000px;
     overflow: hidden;
     /* max-height: 100vh; */
+    max-width: 2040px;
+    max-height: 1300px;
+    
     
 }
 
@@ -45,6 +56,8 @@ body {
     transform: rotateX(var(--move-y)) rotateY(var(--move-x));
     will-change: transform;
     transition: transform var(--transition);
+    max-width: 2040px;
+    max-height: 1300px;
 }
 
 
@@ -89,6 +102,28 @@ body {
 .layer-10 {
     transform: translateZ(380px) scale(0.6);
 }
+.layer-10_animated {
+    
+    animation: layer-10-moving 20s linear   0s infinite;
+}
+
+@keyframes layer-10-moving {
+    from {
+        transform: translateZ(380px) rotate(0deg) scale(0.63);
+    }
+    25% {
+        transform: translateZ(380px) rotate(90deg) scale(0.65);
+    }
+    50% {
+        transform: translateZ(380px) rotate(180deg) scale(0.9);
+    }
+    75% {
+        transform: translateZ(380px) rotate(270deg) scale(0.75);
+    }
+    to {
+        transform: translateZ(380px) rotate(360deg) scale(0.63);
+    }
+  }
 
 .hero-content {
     font-size: calc(var(--index) * 1.8);
@@ -136,18 +171,10 @@ body {
 
 
 
-/* .greeting {
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    background: blue;
-    color: #fff;
-    mix-blend-mode: multiply;
-    font-size: 30px;
-    
-} */
 
 .about, .projects {
+    margin: auto;
+    max-width: 2040px;
     padding-top: calc(var(--index) * 4);
     padding-bottom: calc(var(--index) * 4);
 }
@@ -176,6 +203,7 @@ body {
 
 .projects__item {
     height: calc(var(--index) * 10);
+    max-height: 330px;
     width: 100%;
     background-position: center !important;
     background-size: cover !important;
@@ -215,6 +243,8 @@ body {
     background: rgba(0, 0, 0, 1);
     font-size: calc(var(--index) * 1.2);
     mix-blend-mode: multiply;
+    /* font-size: min(calc((1vw + 1vh)*1.2), 36px); */
+    font-size: clamp(20px, 2.5vw, 36px);
 }
 
 .projects__item:hover .projects__name {
@@ -224,9 +254,47 @@ body {
     border: 1px solid black;
 }
 
+.projects__notification {
+    padding-left: 2.5cqw;
+    font-size: 1.3cqw;
+    line-height: 1.3cqw;
+    bottom: 1%;
+    right: 1%;
+    /* transform:  rotate(-15deg); */
+    background-color: #fffb29;
+    font-family: RubikSprayPaint-Regular;
+    color: #373737;
+    border-radius: 0.3cqw;
+    animation: notification 2s linear 0s infinite;
+}
+
+@keyframes notification {
+    from {
+        background-color: #fffb29;
+    }
+    50% {
+        background-color: #73d93c;
+    }
+    to {
+        background-color: #fffb29;   
+    }
+}
+
+.projects__notification::before {
+    position: absolute;
+    left: 2%;
+    content: '';
+    background: url("../img/smartphone.png");
+    background-repeat: no-repeat;
+    width: 1.8cqw;
+    height: 100%;
+    background-size: contain;
+    
+}
+
 .contacts-icons {
    
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-55%);
     mix-blend-mode: exclusion;
 }
 
@@ -245,6 +313,12 @@ body {
 }
 .contacts-icons__link:hover{
     color: green;
+}
+
+@media screen and (width < 1024px) {
+    .layer-8 {
+        transform: translateZ(260px) scale(0.74);
+    }
 }
 
 
