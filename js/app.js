@@ -1,4 +1,8 @@
-const mobileWidthMediaQuery = window.matchMedia('(max-width: 1024px)');
+
+document.addEventListener("DOMContentLoaded", () => {
+    const mobileWidthMediaQuery = window.matchMedia('(max-width: 1024px)');
+    checkWidthMediaQuery(mobileWidthMediaQuery);
+});
 
 function checkWidthMediaQuery(mediaQuery) {
     if (mediaQuery.matches) {
@@ -9,7 +13,7 @@ function checkWidthMediaQuery(mediaQuery) {
     }
 }
 
-checkWidthMediaQuery(mobileWidthMediaQuery);
+// checkWidthMediaQuery(mobileWidthMediaQuery);
 
 function addMousemoveEventListener() {
     document.addEventListener('mousemove', e => {

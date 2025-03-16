@@ -42,7 +42,6 @@ body {
     margin: auto;
     perspective: 1000px;
     overflow: hidden;
-    /* max-height: 100vh; */
     max-width: 2040px;
     max-height: 1300px;
     
