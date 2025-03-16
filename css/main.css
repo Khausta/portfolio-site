@@ -244,7 +244,7 @@ body {
     font-size: calc(var(--index) * 1.2);
     mix-blend-mode: multiply;
     /* font-size: min(calc((1vw + 1vh)*1.2), 36px); */
-    font-size: clamp(20px, 2.5vw, 36px);
+    font-size: clamp(20px, 2.2vw, 36px);
 }
 
 .projects__item:hover .projects__name {
